@@ -45,7 +45,7 @@ export const createPost = catchError(async (req, res, next) => {
 
 /* READ */
 export const getFeedPosts = catchError(async (req, res) => {
-  const posts = await Post.find();
+  const posts = await Post.find().sort({ createdAt: "desc" });
   res.status(200).json({
     message: "All Posts",
     posts,
